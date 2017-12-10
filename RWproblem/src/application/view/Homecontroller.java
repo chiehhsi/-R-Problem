@@ -12,8 +12,12 @@ public class Homecontroller {
 	
 	//@FXML
 	//private Main main;
-	//@FXML
-	//private ImageView imageview;
+	@FXML
+	private ImageView book;
+	@FXML
+	private ImageView eye;
+	@FXML
+	private ImageView pen;
 	@FXML
 	private void startbutton(){
 		Main.showprocess();
