@@ -1,7 +1,7 @@
 package rw;
 import java.util.LinkedList;
 import java.util.Queue;
-
+import java.util.Random;
 public class Database {
 	private int readers; // number of active readers
 	private int read_or_write;
@@ -9,6 +9,7 @@ public class Database {
 	private Queue<Integer> w = new LinkedList<Integer>();
 	private boolean readentry;
 	private boolean writeentry;
+	Random rand = new Random();
 	  /**
 	    Initializes this database.
 	  */
@@ -21,6 +22,9 @@ public class Database {
 	  //  this.writers = 0;
 	  }
 	 
+	  public double exprand(float lambda) {
+		    return  Math.log(1-rand.nextDouble())/(-lambda);
+		}
 	  /**
 	    Read from this database.
 	 
@@ -30,7 +34,7 @@ public class Database {
 		  System.out.println(read_or_write);
 		  System.out.println(readentry);
 		  System.out.println(writeentry);
-	  }
+	  }  
 	  void readjudge() {
 		  if(this.readers ==0 && w.isEmpty() )
 		  {
@@ -41,6 +45,7 @@ public class Database {
 		  else if(this.readers == 0 && !w.isEmpty())
 		  {  
 			  this.read_or_write = 2;
+			  this.readentry = true;
 		  }
 		  this.notifyAll();
 	  }
@@ -54,6 +59,7 @@ public class Database {
 		  else if(this.readers != 0 && w.isEmpty())
 		  {  
 			  this.read_or_write = 1;
+			  this.writeentry = true ;
 		  }
 		  this.notifyAll();
 	  }
@@ -88,11 +94,11 @@ public class Database {
 				catch(InterruptedException e) {}
 			}
 			System.out.println("Reader " + number + " Start reading. ");
-			}
-		final int DELAY = 5000;
+		}
 		try
-		{
-			  Thread.sleep((int) (Math.random() * DELAY));
+		{ 
+			Thread.sleep((int)(exprand(0.5f)*1000));
+			//Thread.sleep((int) (Math.random() * DELAY));
 		  }
 		  catch (InterruptedException e ) {}
 		synchronized(this) {
@@ -149,10 +155,13 @@ public class Database {
 		  
 			  System.out.println("Writer " + number + " starts writing.");
 		  }
-			  final int DELAY = 5000;
+			  final int DELAY = 1000;
 	    try
 	    {
-	      Thread.sleep((int) (Math.random() * DELAY));
+	    	int a = (int)(exprand(0.5f)*DELAY)  ;
+	    	Thread.sleep(a);
+	    	System.out.println(a);
+	    	//Thread.sleep((int) (Math.random() * DELAY));
 	    }
 	    catch (InterruptedException e) {}
 	    synchronized(this) {

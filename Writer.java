@@ -1,10 +1,11 @@
 package rw;
-
+import java.util.Random;
 public class Writer extends Thread {
 	private static int writers = 0; // number of writers
 	 
 	  private int number;
 	  private Database database;
+	  Random rand = new Random();
 	 
 	  /**
 	    Creates a Writer for the specified database.
@@ -16,6 +17,9 @@ public class Writer extends Thread {
 	    this.database = database;
 	    this.number = Writer.writers++;
 	  }
+	  public double exprand(float lambda) {
+		    return  Math.log(1-rand.nextDouble())/(-lambda);
+		}
 	 
 	  /**
 	    Writes.
@@ -24,10 +28,13 @@ public class Writer extends Thread {
 	  {
 	    while (true)
 	    {
-	      final int DELAY = 5000;
+	      final int DELAY = 1000;
 	      try
 	      {
-	        Thread.sleep((int) (Math.random() * DELAY));
+	    	  int a = (int)(exprand(10)*DELAY)  ;
+		    	Thread.sleep(a);
+		    	System.out.println(a);
+	       // Thread.sleep((int) (Math.random() * DELAY));
 	      }
 	      catch (InterruptedException e) {}
 	      this.database.write(this.number);

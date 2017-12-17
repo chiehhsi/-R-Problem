@@ -1,10 +1,11 @@
 package rw;
-
+import java.util.Random;
 public class Reader extends Thread {
 	private static int readers = 0; // number of readers
 	 
 	  private int number;
 	  private Database database;
+	  Random rand = new Random();
 	 
 	  /**
 	    Creates a Reader for the specified database.
@@ -16,7 +17,9 @@ public class Reader extends Thread {
 	    this.database = database;
 	    this.number = Reader.readers++;
 	  }
-	 
+	  public double exprand(float lambda) {
+		    return  Math.log(1-rand.nextDouble())/(-lambda);
+		}
 	  /**
 	    Reads.
 	  */
@@ -26,10 +29,13 @@ public class Reader extends Thread {
 	    while (true)
 	    {
 
-	      final int DELAY = 5000;
+	      final int DELAY = 1000;
 	      try
 	      {
-	        Thread.sleep((int) (Math.random() * DELAY));
+	    	  int a = (int)(exprand(10)*DELAY)  ;
+		    	Thread.sleep(a);
+		    	System.out.println(a);
+	        //Thread.sleep((int) (Math.random() * DELAY));
 	      }
 	      catch (InterruptedException e) {}
 	      this.database.read(this.number);
