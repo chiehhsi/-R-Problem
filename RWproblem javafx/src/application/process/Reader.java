@@ -4,17 +4,17 @@ public class Reader extends Thread {
 	private static int readers = 0; // number of readers
 	 
 	  private int number;
-	  private Database database;
+	  private application.process.RWprocesscontroller.Database database;
 	  Random rand = new Random();
 	 
 	  /**
 	    Creates a Reader for the specified database.
 	 
-	    @param database database from which to be read.
+	    @param database2 database from which to be read.
 	  */
-	  public Reader(Database database)
+	  public Reader(application.process.RWprocesscontroller.Database database2)
 	  {
-	    this.database = database;
+	    this.database = database2;
 	    this.number = Reader.readers++;
 	  }
 	  public double exprand(float lambda) {

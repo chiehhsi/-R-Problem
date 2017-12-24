@@ -2,12 +2,10 @@ package application.process;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
-import application.process.*;
 
 public class Database {
 	private int readers; // number of active readers
 	private int read_or_write;
-	//private int writers;
 	private Queue<Integer> w = new LinkedList<Integer>();
 	private boolean readentry;
 	private boolean writeentry;

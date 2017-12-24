@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -8,44 +10,44 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.process.RWprocesscontroller">
-   <center>
+   <top>
       <Pane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="46.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Processing..">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Text>
-            <Button layoutX="782.0" layoutY="536.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="83.0" text="HOME" />
-            <ImageView fx:id="book" fitHeight="195.0" fitWidth="346.0" layoutX="27.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="778.0" layoutY="29.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="84.0" text="HOME" />
+            <ImageView fx:id="book" fitHeight="136.0" fitWidth="234.0" layoutX="26.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/BOOK.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="eye" fitHeight="119.0" fitWidth="107.0" layoutX="455.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="eye" fitHeight="82.0" fitWidth="77.0" layoutX="305.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/EYE.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pen" fitHeight="114.0" fitWidth="112.0" layoutX="81.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pen" fitHeight="82.0" fitWidth="84.0" layoutX="448.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/PEN.png" />
                </image>
             </ImageView>
-            <GridPane layoutX="565.0" layoutY="23.0" prefHeight="111.0" prefWidth="286.0">
+            <ImageView fx:id="queue" fitHeight="108.0" fitWidth="155.0" layoutX="43.0" layoutY="253.0">
+               <image>
+                  <Image url="@../../../../../Desktop/queue.jpg" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="-8.0" layoutY="19.0" prefHeight="115.0" prefWidth="253.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number  of  R" textAlignment="CENTER" wrappingWidth="152.56689453125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="READERS" textAlignment="CENTER" wrappingWidth="152.56689453125">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number  of  W" textAlignment="CENTER" wrappingWidth="148.71661376953125" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WRITERS" textAlignment="CENTER" wrappingWidth="148.71661376953125" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="numwriter" prefHeight="24.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="numreader" prefHeight="13.0" prefWidth="185.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="numwriter" prefHeight="28.0" prefWidth="126.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="numreader" prefHeight="25.0" prefWidth="126.0" GridPane.columnIndex="1" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -56,10 +58,12 @@
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button layoutX="794.0" layoutY="142.0" mnemonicParsing="false" onAction="#GO" prefHeight="26.0" prefWidth="64.0" text="GO" />
-            <Label fx:id="r" layoutX="548.0" layoutY="206.0" prefHeight="40.0" prefWidth="304.0" />
-            <Label fx:id="w" layoutX="531.0" layoutY="233.0" prefHeight="36.0" prefWidth="310.0" />
+            <Button layoutX="183.0" layoutY="147.0" mnemonicParsing="false" onAction="#GO" prefHeight="25.0" prefWidth="59.0" text="GO" />
+            <Label fx:id="r" layoutX="255.0" layoutY="4.0" prefHeight="30.0" prefWidth="234.0" />
+            <Label fx:id="w" layoutX="183.0" layoutY="121.0" prefHeight="26.0" prefWidth="189.0" />
+            <ImageView fx:id="i2" fitHeight="82.0" fitWidth="109.0" layoutX="516.0" layoutY="485.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i1" fitHeight="79.0" fitWidth="112.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-   </center>
+   </top>
 </BorderPane>

@@ -4,17 +4,17 @@ public class Writer extends Thread {
 	private static int writers = 0; // number of writers
 	 
 	  private int number;
-	  private Database database;
+	  private application.process.RWprocesscontroller.Database database;
 	  Random rand = new Random();
 	 
 	  /**
 	    Creates a Writer for the specified database.
 	 
-	    @param database database to which to write.
+	    @param database2 database to which to write.
 	  */
-	  public Writer(Database database)
+	  public Writer(application.process.RWprocesscontroller.Database database2)
 	  {
-	    this.database = database;
+	    this.database = database2;
 	    this.number = Writer.writers++;
 	  }
 	  public double exprand(float lambda) {

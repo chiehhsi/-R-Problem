@@ -2,7 +2,6 @@ package application;
 	
 import java.io.IOException;
 
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -35,6 +34,7 @@ public class Main extends Application {
             Scene scene = new Scene(home);
             primaryStage.setScene(scene);
             primaryStage.show();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
