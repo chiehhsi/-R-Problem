@@ -12,6 +12,8 @@ import application.process.Writer;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -44,7 +46,11 @@ public class RWprocesscontroller {
 	public Label r;
 	private int a;
 	private int b;
-
+	Media musicFile_r = new Media("file:///C:/Users/ASUS/Desktop/106上學期/book.mp3");
+	Media musicFile_w = new Media("file:///C:/Users/ASUS/Desktop/106上學期/writer.mp3");
+	
+	MediaPlayer mediaplayer;
+	
     /**GUI gets input from text field*/
 	public RWprocesscontroller() {
 		this.numr = new SimpleIntegerProperty(0);
@@ -163,6 +169,9 @@ public class RWprocesscontroller {
 					}
 				}
 				System.out.println("Reader " + number + " Start reading. ");
+				mediaplayer = new MediaPlayer(musicFile_r);
+				mediaplayer.setAutoPlay(true);
+				
 			}
 			try {
 				Thread.sleep((int) (exprand(0.5f) * 1000));
@@ -171,6 +180,7 @@ public class RWprocesscontroller {
 			}
 			synchronized (this) {
 				System.out.println("Reader " + number + " stops reading.");
+				mediaplayer.setAutoPlay(false);
 				this.readers--;
 				readjudge();
 			}
@@ -211,6 +221,8 @@ public class RWprocesscontroller {
 				}
 
 				System.out.println("Writer " + number + " starts writing.");
+				mediaplayer = new MediaPlayer(musicFile_w);
+				mediaplayer.setAutoPlay(true);
 			}
 			final int DELAY = 1000;
 			try {
@@ -222,6 +234,7 @@ public class RWprocesscontroller {
 			}
 			synchronized (this) {
 				System.out.println("Writer " + number + " stops writing.");
+				mediaplayer.setAutoPlay(false);
 				w.poll();
 				writejudge();
 			}
