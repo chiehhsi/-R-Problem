@@ -6,9 +6,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.VLineTo;
 import javafx.util.Duration;
 import application.process.Reader;
 import application.process.Writer;
+import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -32,9 +37,13 @@ public class RWprocesscontroller {
 	@FXML private ImageView eye;
 	@FXML private ImageView pen;
 	@FXML private ImageView queue;
+	@FXML private ImageView i0; // reader
 	@FXML private ImageView i1;
 	@FXML private ImageView i2;
-
+	@FXML private ImageView i3;
+	@FXML private ImageView i4;
+	@FXML private ImageView i5; // writer
+	@FXML private ImageView i6;
 
 	public String nread;
 	public String nwrite;
@@ -44,8 +53,14 @@ public class RWprocesscontroller {
 	public Label r;
 	private int a;
 	private int b;
+	public int count = 0;
+	public int numqueue=0;
 
-    /**GUI gets input from text field*/
+	PathTransition [] path= new PathTransition[7];
+	ImageView[] icon = new ImageView[7];
+	Path[] p= new Path[7];
+
+	/** GUI gets input from text field */
 	public RWprocesscontroller() {
 		this.numr = new SimpleIntegerProperty(0);
 		this.numw = new SimpleIntegerProperty(0);
@@ -72,15 +87,25 @@ public class RWprocesscontroller {
 		w.setText("the content of writer" + b);
 		numw.setValue(b);
 	}
-    /**main process starts*/
+
+	/** main process starts */
 	public void GO() {
-		//createpeo();
+		icon[0] = i0;
+		icon[1] = i1;
+		icon[2] = i2;
+		icon[3] = i3;
+		icon[4] = i4;
+		icon[5] = i5;
+		icon[6] = i6;
+		for (int i = 0; i < 7; i++) {
+			p[i]= new Path();
+			path[i]=new PathTransition();
+		}		
 		getreader();
 		getwriter();
 		READERS = numr.getValue();
 		WRITERS = numw.getValue();
 		System.out.print(READERS + " " + WRITERS + "\n");
-
 		Database database = new Database();
 		for (int i = 0; i < READERS; i++) {
 			new Reader(database).start();
@@ -90,7 +115,7 @@ public class RWprocesscontroller {
 		}
 
 	}
-	
+
 	class Database extends Thread {
 		int readers = 0; // number of active readers
 		int read_or_write = 0;
@@ -98,16 +123,10 @@ public class RWprocesscontroller {
 		boolean readentry = true;
 		boolean writeentry = true;
 		Random rand = new Random();
-		int numqueue=0;
-
+		int index=0;
+		
 		public double exprand(float lambda) {
 			return Math.log(1 - rand.nextDouble()) / (-lambda);
-		}
-
-		void print() {
-			System.out.println(read_or_write);
-			System.out.println(readentry);
-			System.out.println(writeentry);
 		}
 
 		void readjudge() {
@@ -133,16 +152,17 @@ public class RWprocesscontroller {
 			}
 			this.notifyAll();
 		}
-        /**reader*/
+
+		/** reader */
 		public void read(int number) {
+			
 			synchronized (this) {
-				createpeo();
+				System.out.println("-people in Qline- " + numqueue);
 				System.out.println("Reader " + number + " want entry!");
 				if (read_or_write == 0)
 					read_or_write = 1;
 				if (read_or_write == 2)
 					writeentry = false;
-
 			}
 			synchronized (this) {
 				while (readentry == false) {
@@ -152,8 +172,13 @@ public class RWprocesscontroller {
 					}
 				}
 				this.readers++;
-				createpeo();
+				index=this.readers-1;
+				if(index<0) index=0;
+				System.out.println("---------"+this.readers);
+				create("READER",number,numqueue);
 				System.out.println("Reader " + number + " is in line.");
+				numqueue++;
+				System.out.println("-people in Qline- " + numqueue);
 			}
 			synchronized (this) {
 				while (read_or_write == 2) {
@@ -162,28 +187,37 @@ public class RWprocesscontroller {
 					} catch (InterruptedException e) {
 					}
 				}
+				hi(number,count,"READER");
 				System.out.println("Reader " + number + " Start reading. ");
+				numqueue--;
+				count++;
+				System.out.println("-people in Qline- " + numqueue);
+				System.out.println("-people in Bline- " + count);
+
 			}
 			try {
-				Thread.sleep((int) (exprand(0.5f) * 1000));
+				int a = (int) (exprand(0.5f) * 1000);
+				Thread.sleep(a);
 				// Thread.sleep((int) (Math.random() * DELAY));
 			} catch (InterruptedException e) {
 			}
 			synchronized (this) {
 				System.out.println("Reader " + number + " stops reading.");
+				count--;
+				System.out.println("-people in Bline- " + count);
 				this.readers--;
 				readjudge();
 			}
 		}
 
-		/**writer*/
+		/** writer */
 		public void write(int number) {
+			System.out.println("-people in Qline- " + numqueue);
 			System.out.println("Writer " + number + " want entry!");
 			if (read_or_write == 0)
 				read_or_write = 2;
 			if (read_or_write == 1)
 				readentry = false;
-			// this.writers++;
 			synchronized (this) {
 				while (writeentry == false) {
 					try {
@@ -191,7 +225,10 @@ public class RWprocesscontroller {
 					} catch (InterruptedException e) {
 					}
 				}
+				create("WRITER",number+5,numqueue);
 				System.out.println("Writer " + number + " is in line");
+				numqueue++;
+				System.out.println("-people in Qline- " + numqueue);
 				w.offer(number);
 			}
 			synchronized (this) {
@@ -209,8 +246,12 @@ public class RWprocesscontroller {
 					} catch (InterruptedException e) {
 					}
 				}
-
+				hi(number+5,1,"WRITER");
 				System.out.println("Writer " + number + " starts writing.");
+				count++;
+				numqueue--;
+				System.out.println("-people in Qline- " + numqueue);
+				System.out.println("-people in Bline- " + count);
 			}
 			final int DELAY = 1000;
 			try {
@@ -221,30 +262,87 @@ public class RWprocesscontroller {
 			} catch (InterruptedException e) {
 			}
 			synchronized (this) {
+				count--;
 				System.out.println("Writer " + number + " stops writing.");
+				System.out.println("-people in Bline- " + count);
 				w.poll();
 				writejudge();
 			}
 		}
 	}
-    /**GUI images control*/
-	public void createpeo() {
-		TranslateTransition node1 = new TranslateTransition();
-		//TranslateTransition node2 = new TranslateTransition();
-		node1.setDuration(Duration.seconds(2));
-		node1.setFromX(eye.getLayoutX() - 380);
-		node1.setFromY(eye.getLayoutY() - 480);
-		node1.setToY(queue.getLayoutX() - 250);
-		node1.setToX(queue.getLayoutY() - 400);
-		i1.setFitHeight(60);
-		i1.setFitWidth(60);
-		i1.setImage(new Image("file:///Users/chiehhsi/eclipse-workspace/RWproblem/src/application/EYE%20copy.png"));
-		node1.setNode(i1);
-		node1.play();
+	public void create(String name, int n,int people) {
 
+		photoset(icon[n],name);
+		pathset(p[n],name,people,n);
+		path[n].setNode(icon[n]);
+		move(path[n],p[n]);
+	}
+    double[] loc= new double[7];
+	public void pathset(Path p,String name,int people,int n) {
+		switch(name) {
+		case "READER":
+			p.getElements().add(new MoveTo(-20,-400));
+			break;
+		case "WRITER":
+			p.getElements().add(new MoveTo(-40,-380));
+			break;
+		}
+		loc[n]=getX(people,name);
+		p.getElements().add(new LineTo(loc[n],-180));
+	}
+	public double getX(int people,String name) {
+		double i=0;
+		switch(name) {
+		case "READER":
+		    i= -100+70*people;
+		    break;
+		case "WRITER":
+			i= -230+70*people;
+			break;
+		}
+		return i;
+	}
+	public void hi(int n,int people,String name) {
+		p[n].getElements().clear();
+		p[n].getElements().add(new MoveTo(loc[n],-180));
+		p[n].getElements().add(new LineTo(getF(people,name),0));
+		move(path[n],p[n]);
+	}
+	public double getF(int people,String name) {
+		double i=0;
+		switch(name) {
+		case "READER":
+			i=-80+80*people;
+			break;
+		case "WRITER":
+			i=-200;
+			break;
+		}
+		return i;
+	}
+	
+	public void move(PathTransition t, Path p) {
+		t.setDuration(Duration.seconds(4));
+		t.setPath(p);
+		t.play();
 	}
 
-    /**Homebutton*/
+
+	public void photoset(ImageView i, String name) {
+		switch (name) {
+		case "READER":
+			i.setImage(new Image("file:src/application/EYE%20copy.png"));
+			break;
+		case "WRITER":
+			i.setImage(new Image("file:src/application/PEN%20copy.png"));
+			break;
+		
+		}
+		i.setFitHeight(60);
+		i.setFitWidth(60);
+	}
+
+	/** Homebutton */
 	@FXML
 	private void gohome() {
 		Main.showHome();

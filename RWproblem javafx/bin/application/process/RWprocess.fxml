@@ -13,7 +13,7 @@
    <top>
       <Pane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="778.0" layoutY="29.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="83.0" text="HOME" />
+            <Button layoutX="778.0" layoutY="29.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="84.0" text="HOME" />
             <ImageView fx:id="book" fitHeight="136.0" fitWidth="234.0" layoutX="26.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/BOOK.png" />
@@ -29,11 +29,6 @@
                   <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/PEN.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="queue" fitHeight="108.0" fitWidth="155.0" layoutX="43.0" layoutY="253.0">
-               <image>
-                  <Image url="@../../../../../Desktop/queue.jpg" />
-               </image>
-            </ImageView>
             <GridPane layoutX="-8.0" layoutY="19.0" prefHeight="115.0" prefWidth="253.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="READERS" textAlignment="CENTER" wrappingWidth="152.56689453125">
@@ -46,8 +41,8 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="numwriter" prefHeight="24.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="numreader" prefHeight="13.0" prefWidth="185.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="numwriter" prefHeight="28.0" prefWidth="126.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="numreader" prefHeight="25.0" prefWidth="126.0" GridPane.columnIndex="1" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -58,11 +53,21 @@
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button layoutX="56.0" layoutY="143.0" mnemonicParsing="false" onAction="#GO" prefHeight="26.0" prefWidth="64.0" text="GO" />
+            <Button layoutX="183.0" layoutY="147.0" mnemonicParsing="false" onAction="#GO" prefHeight="25.0" prefWidth="59.0" text="GO" />
             <Label fx:id="r" layoutX="255.0" layoutY="4.0" prefHeight="30.0" prefWidth="234.0" />
-            <Label fx:id="w" layoutX="133.0" layoutY="134.0" prefHeight="26.0" prefWidth="189.0" />
-            <ImageView fitHeight="82.0" fitWidth="109.0" layoutX="289.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="i1" fitHeight="101.0" fitWidth="137.0" layoutX="352.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="w" layoutX="183.0" layoutY="121.0" prefHeight="26.0" prefWidth="189.0" />
+            <ImageView fx:id="i0" fitHeight="87.0" fitWidth="124.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i1" fitHeight="87.0" fitWidth="124.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i2" fitHeight="87.0" fitWidth="124.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i3" fitHeight="87.0" fitWidth="124.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i4" fitHeight="87.0" fitWidth="124.0" layoutX="382.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i5" fitHeight="87.0" fitWidth="124.0" layoutX="516.0" layoutY="485.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="i6" fitHeight="87.0" fitWidth="124.0" layoutX="516.0" layoutY="485.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="queue" fitHeight="149.0" fitWidth="216.0" layoutX="27.0" layoutY="242.0">
+               <image>
+                  <Image url="@../queue%20copy.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </top>

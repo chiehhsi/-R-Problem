@@ -12,28 +12,17 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="380.0" layoutY="338.0" mnemonicParsing="false" onAction="#startbutton" prefHeight="47.0" prefWidth="113.0" text="START" />
-            <Text layoutX="88.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="READERs and WRITERs PROBLEM" textAlignment="CENTER" wrappingWidth="695.67236328125">
+            <Button layoutX="396.0" layoutY="459.0" mnemonicParsing="false" onAction="#startbutton" prefHeight="47.0" prefWidth="113.0" text="START" />
+            <Text layoutX="110.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="READERs and WRITERs PROBLEM" textAlignment="CENTER" wrappingWidth="695.67236328125">
                <font>
                   <Font size="26.0" />
                </font>
             </Text>
-            <ImageView fx:id="book" fitHeight="176.0" fitWidth="265.0" layoutX="34.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" rotate="33.2">
+            <ImageView fx:id="book" fitHeight="356.0" fitWidth="311.0" layoutX="297.0" layoutY="37.0">
                <image>
-                  <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/BOOK.png" />
+                  <Image url="@../reader-256.png" />
                </image>
-            </ImageView>
-            <ImageView fx:id="pen" fitHeight="114.0" fitWidth="112.0" layoutX="718.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/PEN.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="eye" fitHeight="119.0" fitWidth="107.0" layoutX="594.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/EYE.png" />
-               </image>
-            </ImageView>
-         	
+            </ImageView>         	
          </children>
       </Pane>
    </center>
