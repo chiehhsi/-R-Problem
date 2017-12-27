@@ -79,9 +79,20 @@ public class RWprocesscontroller {
 	Media musicFile_r = new Media("file:///Users/chiehhsi/eclipse-workspace/RWproblem/src/application/book.mp3");
 	Media musicFile_w = new Media("file:///Users/chiehhsi/eclipse-workspace/RWproblem/src/application/writer.mp3");
 
+<<<<<<< HEAD
 	MediaPlayer mediaplayer;
 
 	/** GUI gets input from text field */
+=======
+	/** GUI gets input from text field */
+	
+	Media musicFile_r = new Media("file:///C:/Users/ASUS/Desktop/106上學期/writer.mp3");
+	Media musicFile_w = new Media("file:///C:/Users/ASUS/Desktop/106上學期/book.mp3");
+	
+	MediaPlayer mediaplayer;
+	
+    /**GUI gets input from text field*/
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 	public RWprocesscontroller() {
 		this.numr = new SimpleIntegerProperty(0);
 		this.numw = new SimpleIntegerProperty(0);
@@ -218,18 +229,35 @@ public class RWprocesscontroller {
 				hi(number, readers, "READER");
 				
 				System.out.println("Reader " + number + " Start reading. ");
+<<<<<<< HEAD
 				this.lineofreader--;
+=======
+
+				numqueue--;
+				count++;
+				System.out.println("-people in Qline- " + numqueue);
+				System.out.println("-people in Bline- " + count);
+
+
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 				mediaplayer = new MediaPlayer(musicFile_r);
 				mediaplayer.setAutoPlay(true);
 				mediaplayer.setVolume(3);
 				
+<<<<<<< HEAD
 				this.readers++;
 
+=======
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 			}
 
 			try {
+<<<<<<< HEAD
 	
 				int a = (int)(exprand(1)* 5000);
+=======
+				int a = (int) (exprand(0.5f) * 10000);
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 				Thread.sleep(a);
 				
 				mediaplayer.setStartTime(Duration.seconds((double) a));
@@ -238,8 +266,15 @@ public class RWprocesscontroller {
 			}
 			synchronized (this) {
 				System.out.println("Reader " + number + " stops reading.");
+<<<<<<< HEAD
 				mediaplayer.setAutoPlay(false);
 				icon[number].setImage(null);
+=======
+
+				count--;
+				System.out.println("-people in Bline- " + count);
+				mediaplayer.setAutoPlay(false);
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 				this.readers--;
 				this.existreader--;
 				finishread();
@@ -274,9 +309,20 @@ public class RWprocesscontroller {
 			
 				hi(number + 5, 1, "WRITER");
 				System.out.println("Writer " + number + " starts writing.");
+<<<<<<< HEAD
 				mediaplayer = new MediaPlayer(musicFile_w);
 				mediaplayer.setAutoPlay(true);
 			}
+=======
+				count++;
+				numqueue--;
+				System.out.println("-people in Qline- " + numqueue);
+				System.out.println("-people in Bline- " + count);
+				mediaplayer = new MediaPlayer(musicFile_w);
+				mediaplayer.setAutoPlay(true);
+			}
+			final int DELAY = 10000;
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 			try {
 				int a = (int) (exprand(1)*5000);
 				Thread.sleep(a);
@@ -286,8 +332,13 @@ public class RWprocesscontroller {
 			}
 			synchronized (this) {
 				System.out.println("Writer " + number + " stops writing.");
+<<<<<<< HEAD
 				mediaplayer.setAutoPlay(false);
 				icon[number+5].setImage(null);
+=======
+				System.out.println("-people in Bline- " + count);
+				mediaplayer.setAutoPlay(false);
+>>>>>>> 8b0556e1e042b587be589e54b482310ae925d783
 				w.poll();
 				finishwrite();
 			}

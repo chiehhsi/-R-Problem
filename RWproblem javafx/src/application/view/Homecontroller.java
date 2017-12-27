@@ -14,8 +14,6 @@ public class Homecontroller {
 	//@FXML
 	//private Main main;
 
-
-	
 	@FXML
 	private ImageView book;
 	@FXML

@@ -16,7 +16,7 @@
             <Button layoutX="778.0" layoutY="29.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="84.0" text="HOME" />
             <ImageView fx:id="book" fitHeight="136.0" fitWidth="234.0" layoutX="26.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../git/-R-Problem/RWproblem/src/img/BOOK.png" />
+                  <Image url="@../../../../../BOOK.png" />
                </image>
             </ImageView>
             <ImageView fx:id="eye" fitHeight="82.0" fitWidth="77.0" layoutX="305.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
