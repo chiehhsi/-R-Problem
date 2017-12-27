@@ -28,10 +28,9 @@ public class Writer extends Thread {
 	  {
 	    while (true)
 	    {
-	      final int DELAY = 1000;
 	      try
 	      {
-	    	  int a = (int)(exprand(10)*DELAY)  ;
+	    	  int a = (int)(exprand(5f)*1000)  ;
 		    	Thread.sleep(a);
 		    	System.out.println(a);
 	       // Thread.sleep((int) (Math.random() * DELAY));
