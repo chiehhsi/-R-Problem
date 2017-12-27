@@ -29,12 +29,12 @@ public class Reader extends Thread {
 	    while (true)
 	    {
 
-	      final int DELAY = 1000;
+	      final int DELAY = 10000;
 	      try
 	      {
-	    	  int a = (int)(exprand(10)*DELAY)  ;
+	    	  int a = (int)(exprand(3)*DELAY)  ;
 		    	Thread.sleep(a);
-		    	//System.out.println(a);
+		    	System.out.println(a);
 	        //Thread.sleep((int) (Math.random() * DELAY));
 	      }
 	      catch (InterruptedException e) {}

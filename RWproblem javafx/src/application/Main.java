@@ -5,22 +5,30 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 //import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 
 public class Main extends Application {
 	private static Stage primaryStage;
 	private static BorderPane home;
-
+	Media musicFile_r = new Media("file:///Users/chiehhsi/eclipse-workspace/RWproblem/src/application/jazz.mp3");
+	MediaPlayer mediaplayer;
 
 	@Override
 	public void start(Stage primaryStage) {
 		Main.primaryStage= primaryStage;
 		Main.primaryStage.setTitle("RW problem");
 		showHome();
+		mediaplayer = new MediaPlayer(musicFile_r);
+		mediaplayer.setAutoPlay(true);
+		mediaplayer.setVolume(0.5);
 
 	}
 	public static void showHome() {

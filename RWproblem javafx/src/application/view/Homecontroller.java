@@ -22,6 +22,8 @@ public class Homecontroller {
 	private ImageView eye;
 	@FXML
 	private ImageView pen;
+	@FXML
+	private ImageView coffee;
 
 	
 	public void startbutton(){

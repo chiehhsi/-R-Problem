@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.process.RWprocesscontroller">
-   <top>
+   <center>
       <Pane prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="778.0" layoutY="29.0" mnemonicParsing="false" onAction="#gohome" prefHeight="34.0" prefWidth="84.0" text="HOME" />
@@ -70,5 +70,5 @@
             </ImageView>
          </children>
       </Pane>
-   </top>
+   </center>
 </BorderPane>
