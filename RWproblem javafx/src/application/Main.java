@@ -8,12 +8,16 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 //import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 
 
 
 public class Main extends Application {
 	private static Stage primaryStage;
 	private static BorderPane home;
+	MediaPlayer mediaplayer;
 
 
 	@Override
@@ -21,6 +25,9 @@ public class Main extends Application {
 		Main.primaryStage= primaryStage;
 		Main.primaryStage.setTitle("RW problem");
 		showHome();
+		Media BGM = new Media("file:///C:/Users/ASUS/Desktop/106¤W¾Ç´Á/jazz.mp3");
+		mediaplayer = new MediaPlayer(BGM);
+		mediaplayer.setAutoPlay(true);
 
 	}
 	public static void showHome() {

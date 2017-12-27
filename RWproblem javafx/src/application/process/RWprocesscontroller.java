@@ -55,7 +55,6 @@ public class RWprocesscontroller {
 	public Label r;
 	private int a;
 	private int b;
-<<<<<<< HEAD
 	public int count = 0;
 	public int numqueue=0;
 
@@ -64,14 +63,13 @@ public class RWprocesscontroller {
 	Path[] p= new Path[7];
 
 	/** GUI gets input from text field */
-=======
-	Media musicFile_r = new Media("file:///C:/Users/ASUS/Desktop/106上學期/book.mp3");
-	Media musicFile_w = new Media("file:///C:/Users/ASUS/Desktop/106上學期/writer.mp3");
+	
+	Media musicFile_r = new Media("file:///C:/Users/ASUS/Desktop/106上學期/writer.mp3");
+	Media musicFile_w = new Media("file:///C:/Users/ASUS/Desktop/106上學期/book.mp3");
 	
 	MediaPlayer mediaplayer;
 	
     /**GUI gets input from text field*/
->>>>>>> 57b9cfcff8dce8919085d59e5235d6fabe232363
 	public RWprocesscontroller() {
 		this.numr = new SimpleIntegerProperty(0);
 		this.numw = new SimpleIntegerProperty(0);
@@ -200,32 +198,29 @@ public class RWprocesscontroller {
 				}
 				hi(number,count,"READER");
 				System.out.println("Reader " + number + " Start reading. ");
-<<<<<<< HEAD
+
 				numqueue--;
 				count++;
 				System.out.println("-people in Qline- " + numqueue);
 				System.out.println("-people in Bline- " + count);
 
-=======
+
 				mediaplayer = new MediaPlayer(musicFile_r);
 				mediaplayer.setAutoPlay(true);
 				
->>>>>>> 57b9cfcff8dce8919085d59e5235d6fabe232363
 			}
 			try {
-				int a = (int) (exprand(0.5f) * 1000);
+				int a = (int) (exprand(0.5f) * 10000);
 				Thread.sleep(a);
 				// Thread.sleep((int) (Math.random() * DELAY));
 			} catch (InterruptedException e) {
 			}
 			synchronized (this) {
 				System.out.println("Reader " + number + " stops reading.");
-<<<<<<< HEAD
+
 				count--;
 				System.out.println("-people in Bline- " + count);
-=======
 				mediaplayer.setAutoPlay(false);
->>>>>>> 57b9cfcff8dce8919085d59e5235d6fabe232363
 				this.readers--;
 				readjudge();
 			}
@@ -269,17 +264,14 @@ public class RWprocesscontroller {
 				}
 				hi(number+5,1,"WRITER");
 				System.out.println("Writer " + number + " starts writing.");
-<<<<<<< HEAD
 				count++;
 				numqueue--;
 				System.out.println("-people in Qline- " + numqueue);
 				System.out.println("-people in Bline- " + count);
-=======
 				mediaplayer = new MediaPlayer(musicFile_w);
 				mediaplayer.setAutoPlay(true);
->>>>>>> 57b9cfcff8dce8919085d59e5235d6fabe232363
 			}
-			final int DELAY = 1000;
+			final int DELAY = 10000;
 			try {
 				int a = (int) (exprand(0.5f) * DELAY);
 				Thread.sleep(a);
@@ -290,11 +282,8 @@ public class RWprocesscontroller {
 			synchronized (this) {
 				count--;
 				System.out.println("Writer " + number + " stops writing.");
-<<<<<<< HEAD
 				System.out.println("-people in Bline- " + count);
-=======
 				mediaplayer.setAutoPlay(false);
->>>>>>> 57b9cfcff8dce8919085d59e5235d6fabe232363
 				w.poll();
 				writejudge();
 			}

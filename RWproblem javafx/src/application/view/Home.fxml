@@ -18,9 +18,14 @@
                   <Font size="26.0" />
                </font>
             </Text>
-            <ImageView fx:id="book" fitHeight="356.0" fitWidth="311.0" layoutX="297.0" layoutY="37.0">
+            <ImageView fx:id="book" fitHeight="356.0" fitWidth="311.0" layoutX="230.0" layoutY="37.0">
                <image>
                   <Image url="@../reader-256.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="498.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../coffee1.png" />
                </image>
             </ImageView>         	
          </children>
